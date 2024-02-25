@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import '../assets/styles/MainCanvas.css';
+import mainEffect from '../assets/cells/mainEffect';
 
 interface MainProps {
   mode: string;
@@ -22,6 +23,24 @@ const MainCanvas: React.FC<MainProps> = ({ mode }) => {
       canvas.width = 300;
       canvas.height = 400;
     }
+
+    const effect = new mainEffect(canvas);
+
+    const handleResize = () => {
+      if ( window.innerWidth > 520) {
+        canvas.width = 500;
+        canvas.height = 300;
+      } else {
+        canvas.width = 300;
+        canvas.height = 300;
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (

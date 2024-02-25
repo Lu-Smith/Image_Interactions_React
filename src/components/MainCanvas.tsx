@@ -25,6 +25,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode }) => {
     }
 
     const effect = new mainEffect(canvas);
+    effect.render(ctx);
 
     const handleResize = () => {
       if ( window.innerWidth > 520) {

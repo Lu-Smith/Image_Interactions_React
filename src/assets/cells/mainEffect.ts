@@ -6,17 +6,18 @@ export default class mainEffect {
     height: number;
     cellWidth: number;
     cellHeight: number;
-    cell: mainCell;
     imageGrid: mainCell[];
+    image: CanvasImageSource;
 
  constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.width = this.canvas.width;
     this.height = this.canvas.height;
-    this.cellWidth = this.width / 35;
-    this.cellHeight = this. height / 55;
-    this.cell = new mainCell(this, 0, 0);
+    this.cellWidth = this.width / 15;
+    this.cellHeight = this. height / 35;
     this.imageGrid = [];
+    this.createGrid();
+    this.image = document.getElementById('mainImage');
  }
  createGrid() {
    for (let y = 0; y < this.height; y += this.cellHeight) {
@@ -26,6 +27,9 @@ export default class mainEffect {
    }
  }
  render(context: CanvasRenderingContext2D) {
-    this.cell.draw(context);
+   context.drawImage(this.image, 0, 0);
+    this.imageGrid.forEach(cell => {
+      cell.draw(context);
+    })
  }
 }

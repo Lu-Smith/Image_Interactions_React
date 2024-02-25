@@ -14,3 +14,7 @@
 .MainCanvas.bolt canvas {
     border: 5px solid #042108;
 }
+
+.MainCanvas #mainImage {
+    display: none;
+}

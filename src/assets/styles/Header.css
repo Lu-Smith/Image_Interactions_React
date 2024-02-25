@@ -1,0 +1,93 @@
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+    width: 100vw;
+    height: 100%;
+    font-size: 0.8rem;
+    padding: 0 30px;
+}
+
+.Header h1 {
+    font-family: "Pacifico", serif;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.Header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    width: 158px;
+    overflow-y: hidden;
+}
+
+.Header span {
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px rgba(247, 195, 97, 0.5);
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.Header span:hover {
+    color: #8ecccc;
+    text-shadow: none;
+}
+
+.Header.light .light {
+    color: #f1af36;
+}
+
+.Header.light .dark {
+    color: #f5f4eb;
+}
+
+.Header.light .bolt {
+    color: #ff004d;
+}
+
+.Header.dark .light {
+    color: #f1af36;
+}
+
+.Header.dark .dark {
+    color: #f5f4eb;
+}
+
+.Header.dark .bolt {
+    color: #ff004d;
+}
+
+.Header.bolt .light {
+    color: #f1af36;
+}
+
+.Header.bolt .dark {
+    color: #f5f4eb;
+}
+
+.Header.bolt .bolt {
+    color: #ff004d;
+}
+
+.Header div span {
+    font-size: 1.3rem;
+    text-shadow: none;
+}
+
+.Header.light div span {
+    color: #494949;
+}
+
+.Header.dark div span {
+    color: #8ecccc;
+}
+
+.Header.bolt div span {
+    color: #d8d7d7;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../assets/styles/MainCanvas.css';
 import mainEffect from '../assets/cells/mainEffect';
 import mainImage from '../assets/images/Alps.jpg';
+import mobileImage from '../assets/images/AlpsSmall.jpg';
 
 interface MainProps {
   mode: string;
@@ -50,7 +51,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode }) => {
   return (
     <div className={`MainCanvas ${mode}`}>
       <canvas ref={canvasRef} id="canvas1"></canvas>
-      <img src={mainImage} id="mainImage" className={smallImage ? 'small-image' : 'large-image'} alt="Italian Alps by Luna Smith" />
+      <img src={smallImage ? mobileImage : mainImage} id="mainImage" alt="Italian Alps by Luna Smith" />
     </div>
   );
 };

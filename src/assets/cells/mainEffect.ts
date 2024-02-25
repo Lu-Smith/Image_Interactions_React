@@ -17,7 +17,7 @@ export default class mainEffect {
     this.cellHeight = this. height / 35;
     this.imageGrid = [];
     this.createGrid();
-    this.image = document.getElementById('mainImage');
+    this.image = document.getElementById('mainImage') as HTMLCanvasElement;
  }
  createGrid() {
    for (let y = 0; y < this.height; y += this.cellHeight) {

@@ -1,0 +1,16 @@
+.MainCanvas canvas {
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.MainCanvas.light canvas {
+    border: 5px solid #1b251b;
+}
+
+.MainCanvas.dark canvas {
+    border: 5px solid black;
+}
+
+.MainCanvas.bolt canvas {
+    border: 5px solid #042108;
+}

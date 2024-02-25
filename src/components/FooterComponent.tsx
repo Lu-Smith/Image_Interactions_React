@@ -17,7 +17,7 @@ const FooterComponent: React.FC<FooterProps> = ({mode}) => {
             </a>
             -
             <a 
-            href='https://github.com/Lu-Smith/flow_fields_react'
+            href='https://github.com/Lu-Smith/Image_Interactions_React'
             target='_blank'>
                 GitHub
             </a>

@@ -1,0 +1,46 @@
+.Footer {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Footer a {
+    text-decoration: none;
+    margin-left: 5px;
+    transition: all 200ms ease-in-out;
+}
+
+.Footer.light a {
+    color: #706e6a;
+}
+
+.Footer.dark a {
+    color: #eeeeee;
+}
+
+.Footer.bolt a {
+    color: #ebe4bc;
+}
+
+.Footer a:hover {
+    color: #fce38a;
+    text-decoration: none;
+    margin-left: 5px;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.Footer.light a:hover {
+    color: white;
+}
+
+.Footer a.portfolio {
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 786px) {
+    .Footer {
+        font-size: 0.8rem;
+    }
+}

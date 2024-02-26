@@ -35,10 +35,11 @@ export default class mainEffect {
 
  }
  createGrid() {
-  const index = 0;
+  let index = 0;
    for (let y = 0; y < this.height; y += this.cellHeight) {
       for (let x = 0; x < this.width; x += this.cellWidth) {
-         this.imageGrid.push(new mainCell(this, x, y, index));
+        index++;
+         this.imageGrid.unshift(new mainCell(this, x, y, index));
       }
    }
  }

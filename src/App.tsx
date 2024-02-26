@@ -30,10 +30,10 @@ const App = () => {
         <motion.div 
         className={`CanvasContainer ${mode}`}>
           <motion.div variants={childVariantsR}  initial="hidden" whileInView={"visible"}>
-            <MainCanvas mode={mode} />
+            <MainCanvas mode={mode} imageNumber={1} />
           </motion.div>
           <motion.div variants={childVariantsL}  initial="hidden" whileInView={"visible"}>
-            <MainCanvas mode={mode} />
+            <MainCanvas mode={mode} imageNumber={2} />
           </motion.div>
         </motion.div>
         <div className={`FooterContainer ${mode}`}>

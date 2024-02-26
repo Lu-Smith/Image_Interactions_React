@@ -18,13 +18,15 @@ export default class mainCell {
     speedX: number;
     speedY: number;
     randomize: number;
+    index: number;
 
-    constructor(effect: mainEffect, x: number, y: number) {
+    constructor(effect: mainEffect, x: number, y: number, index: number) {
         this.effect = effect;
         this.x = x;
         this.y = y;
-        this.positionX = 0;
-        this.positionY = 0;
+        this.index = index;
+        this.positionX = this.effect.width * 0.5;
+        this.positionY = this.effect.height;
         this.speedX = 0;
         this.speedY = 0;
         this.width = this.effect.cellWidth;
@@ -37,23 +39,29 @@ export default class mainCell {
         this.ease = 0.3;
         this.friction = 0.9;
         this.randomize = Math.random() * 50 + 2;
+        this.start();
     }
     draw(context: CanvasRenderingContext2D) {
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 
             this.width, this.height, this.positionX, this.positionY, this.width, this.height);
-        // context.strokeRect(this.x, this.y, this.width, this.height);
+            context.strokeRect(this.positionX, this.positionY, this.width, this.height);
+    }
+    start() {
+        this.speedX = (this.x - this.positionX)/this.randomize;
+        this.speedY = (this.y - this.positionY)/this.randomize;
     }
     update() {
         //cell position
+        if ( Math.abs(this.speedX) > 0.01 || Math.abs(this.speedY) > 0.01) {
             this.speedX = (this.x - this.positionX)/this.randomize;
             this.speedY = (this.y - this.positionY)/this.randomize;
             this.positionX += this.speedX;
             this.positionY += this.speedY;
+        }
         //crop
         if (this.effect.mouse.x && this.effect.mouse.y) {
             const dx = this.effect.mouse.x - this.x;
             const dy = this.effect.mouse.y - this.y;
-
             const distance = Math.hypot(dx, dy);
             if (distance < this.effect.mouse.radius) {
                 const angle = Math.atan2(dy, dx);

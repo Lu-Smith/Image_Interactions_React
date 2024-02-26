@@ -7,7 +7,7 @@ export default class mainEffect {
     cellWidth: number;
     cellHeight: number;
     imageGrid: mainCell[];
-    mouse: {x: number | null, y: number | null, radius: number};
+    mouse: {x: number | undefined, y: number | undefined, radius: number};
 
  constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -18,13 +18,19 @@ export default class mainEffect {
     this.imageGrid = [];
     this.createGrid();
     this.mouse = {
-      x: null,
-      y: null,
-      radius: 100,
+      x: undefined,
+      y: undefined,
+      radius: 80,
     }
     this.canvas.addEventListener('mousemove', e => {
       this.mouse.x = e.offsetX;
       this.mouse.y = e.offsetY;
+    })
+
+    this.canvas.addEventListener('mouseleave', e => {
+      this.mouse.x = undefined;
+      this.mouse.y = undefined;
+      console.log(e)
     })
 
  }

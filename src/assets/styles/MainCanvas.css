@@ -18,3 +18,7 @@
 .MainCanvas #mainImage {
     display: none;
 }
+
+.MainCanvas #Image1 {
+    display: none;
+}

@@ -11,6 +11,8 @@ export default class mainCell {
     slideY: number;
     vx: number;
     vy: number;
+    ease: number;
+    friction: number;
 
     constructor(effect: mainEffect, x: number, y: number) {
         this.effect = effect;
@@ -23,10 +25,12 @@ export default class mainCell {
         this.slideY = 0;
         this.vx = 0;
         this.vy = 0;
+        this.ease = 0.05;
+        this.friction = 0.8;
     }
     draw(context: CanvasRenderingContext2D) {
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, this.width, this.height, this.x, this.y, this.width, this.height);
-        context.strokeRect(this.x, this.y, this.width, this.height);
+        // context.strokeRect(this.x, this.y, this.width, this.height);
     }
     update() {
         if (this.effect.mouse.x && this.effect.mouse.y) {
@@ -35,15 +39,13 @@ export default class mainCell {
 
             const distance = Math.hypot(dx, dy);
             if (distance < this.effect.mouse.radius) {
+                const angle = Math.atan2(dy, dx);
                 const force = distance / this.effect.mouse.radius;
-                this.vx = force;
-                this.vy = force;
-            } else {
-                this.vx = 0;
-                this.vy = 0;
-            }
-            this.slideX += this.vx;
-            this.slideY += this.vy;
+                this.vx = force * Math.cos(angle);
+                this.vy = force * Math.sin(angle);
+            } 
+            this.slideX += (this.vx *= this.friction) - this.slideX * this.ease;
+            this.slideY += (this.vy *= this.friction) - this.slideY * this.ease;
         }
     }
 }

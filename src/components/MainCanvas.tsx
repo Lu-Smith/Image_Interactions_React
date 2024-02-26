@@ -17,7 +17,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode }) => {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    console.error('Failed to get canvas context.');
+
     if (!ctx) return;
 
     const setCanvasDimensions = () => {
@@ -35,7 +35,14 @@ const MainCanvas: React.FC<MainProps> = ({ mode }) => {
     setCanvasDimensions();
 
     const effect = new mainEffect(canvas);
-    effect.render(ctx);
+
+
+    const animate = () => {
+      effect.render(ctx);
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
 
     const handleResize = () => {
       setCanvasDimensions();

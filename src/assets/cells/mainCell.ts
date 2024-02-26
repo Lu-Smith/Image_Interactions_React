@@ -26,7 +26,7 @@ export default class mainCell {
         this.y = y;
         this.index = index;
         this.positionX = this.effect.width * 0.5;
-        this.positionY = this.effect.height;
+        this.positionY = this.effect.height * 0.5;
         this.speedX = 0;
         this.speedY = 0;
         this.width = this.effect.cellWidth;
@@ -39,12 +39,14 @@ export default class mainCell {
         this.ease = 0.3;
         this.friction = 0.9;
         this.randomize = Math.random() * 50 + 2;
-        this.start();
+        setTimeout(() => {
+            this.start();
+        }, this.index * 30);
     }
     draw(context: CanvasRenderingContext2D) {
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 
             this.width, this.height, this.positionX, this.positionY, this.width, this.height);
-            context.strokeRect(this.positionX, this.positionY, this.width, this.height);
+            // context.strokeRect(this.positionX, this.positionY, this.width, this.height);
     }
     start() {
         this.speedX = (this.x - this.positionX)/this.randomize;

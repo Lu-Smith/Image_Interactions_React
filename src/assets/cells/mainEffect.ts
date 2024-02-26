@@ -17,7 +17,7 @@ export default class mainEffect {
     this.cellHeight = this. height / 35;
     this.imageGrid = [];
     this.createGrid();
-    this.image = document.getElementById('mainImage') as HTMLCanvasElement;
+
  }
  createGrid() {
    for (let y = 0; y < this.height; y += this.cellHeight) {
@@ -27,7 +27,6 @@ export default class mainEffect {
    }
  }
  render(context: CanvasRenderingContext2D) {
-   context.drawImage(this.image, 0, 0);
     this.imageGrid.forEach(cell => {
       cell.draw(context);
     })

@@ -7,7 +7,7 @@ export default class mainEffect {
     cellWidth: number;
     cellHeight: number;
     imageGrid: mainCell[];
-    image: CanvasImageSource;
+    mouse: {x: number | null, y: number | null, radius: number};
 
  constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -17,6 +17,15 @@ export default class mainEffect {
     this.cellHeight = this. height / 35;
     this.imageGrid = [];
     this.createGrid();
+    this.mouse = {
+      x: null,
+      y: null,
+      radius: 100,
+    }
+    this.canvas.addEventListener('mousemove', e => {
+      this.mouse.x = e.offsetX;
+      this.mouse.y = e.offsetY;
+    })
 
  }
  createGrid() {
@@ -28,6 +37,7 @@ export default class mainEffect {
  }
  render(context: CanvasRenderingContext2D) {
     this.imageGrid.forEach(cell => {
+      cell.update();
       cell.draw(context);
     })
  }

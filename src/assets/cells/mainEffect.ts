@@ -13,8 +13,8 @@ export default class mainEffect {
     this.canvas = canvas;
     this.width = this.canvas.width;
     this.height = this.canvas.height;
-    this.cellWidth = this.width / 15;
-    this.cellHeight = this. height / 35;
+    this.cellWidth = this.width / 10;
+    this.cellHeight = this. height / 12;
     this.imageGrid = [];
     this.createGrid();
     this.mouse = {
@@ -35,14 +35,15 @@ export default class mainEffect {
 
  }
  createGrid() {
+  const index = 0;
    for (let y = 0; y < this.height; y += this.cellHeight) {
       for (let x = 0; x < this.width; x += this.cellWidth) {
-         this.imageGrid.push(new mainCell(this, x, y));
+         this.imageGrid.push(new mainCell(this, x, y, index));
       }
    }
  }
  render(context: CanvasRenderingContext2D) {
-    this.imageGrid.forEach(cell => {
+    this.imageGrid.forEach((cell) => {
       cell.update();
       cell.draw(context);
     })

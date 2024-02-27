@@ -13,14 +13,14 @@ export default class effectThree {
     this.canvas = canvas;
     this.width = this.canvas.width;
     this.height = this.canvas.height;
-    this.cellWidth = this.width / 15;
-    this.cellHeight = this. height / 35;
+    this.cellWidth = this.width / 10;
+    this.cellHeight = this. height / 15;
     this.imageGrid = [];
     this.createGrid();
     this.mouse = {
       x: undefined,
       y: undefined,
-      radius: 80,
+      radius: 60,
     }
     this.canvas.addEventListener('mousemove', e => {
       this.mouse.x = e.offsetX;

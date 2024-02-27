@@ -4,7 +4,7 @@
 }
 
 .MainCanvas.light canvas {
-    border: 5px solid #1b251b;
+    border: 5px solid #34495e;
 }
 
 .MainCanvas.dark canvas {
@@ -12,7 +12,7 @@
 }
 
 .MainCanvas.bolt canvas {
-    border: 5px solid #042108;
+    border: 5px solid #613864;
 }
 
 .MainCanvas #Image1 {

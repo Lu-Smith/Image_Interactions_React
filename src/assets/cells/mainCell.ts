@@ -38,15 +38,16 @@ export default class mainCell {
         this.vy = 0;
         this.ease = 0.3;
         this.friction = 0.9;
-        this.randomize = Math.random() * 50 + 2;
+        this.randomize = Math.random() * 30 + 2;
         setTimeout(() => {
             this.start();
-        }, this.index * 30);
+        }, this.index * 4);
     }
     draw(context: CanvasRenderingContext2D) {
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 
             this.width, this.height, this.positionX, this.positionY, this.width, this.height);
-            // context.strokeRect(this.positionX, this.positionY, this.width, this.height);
+            context.strokeStyle = '#fcfefe';
+            context.strokeRect(this.positionX, this.positionY, this.width, this.height);        
     }
     start() {
         this.speedX = (this.x - this.positionX)/this.randomize;

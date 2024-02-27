@@ -12,6 +12,10 @@ import mobileImage1 from '../assets/images/GardenSmall.jpg';
 import effectTwo from '../assets/cells/effectTwo';
 import Image2 from '../assets/images/Guardian.jpg';
 import mobileImage2 from '../assets/images/GuardianSmall.jpg';
+//image4
+import effectThree from '../assets/cells/effectThree';
+import Image3 from '../assets/images/Odin.jpg';
+import mobileImage3 from '../assets/images/OdinSmall.jpg';
 
 interface MainProps {
   mode: string;
@@ -22,13 +26,16 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvasRef1 = useRef<HTMLCanvasElement>(null);
   const canvasRef2 = useRef<HTMLCanvasElement>(null);
+  const canvasRef3 = useRef<HTMLCanvasElement>(null);
   const [smallImage, setSmallImage] = useState<boolean>(false);
   const [smallImage1, setSmallImage1] = useState<boolean>(false);
   const [smallImage2, setSmallImage2] = useState<boolean>(false);
+  const [smallImage3, setSmallImage3] = useState<boolean>(false);
 
   useEffect(() => {
     const canvas = imageNumber === 1 ? canvasRef.current : 
-    imageNumber === 2 ? canvasRef1.current: canvasRef2.current;
+    imageNumber === 2 ? canvasRef1.current: 
+    imageNumber === 3 ? canvasRef2.current: canvasRef3.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
@@ -37,23 +44,26 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber }) => {
     const setCanvasDimensions = () => {
       if (window.innerWidth > 640) {
         canvas.width = 600;
-        canvas.height = imageNumber === 1 ? 722 : 804; 
+        canvas.height = imageNumber === 1 ? 722 : imageNumber === 4 ? 852 : 804; 
         setSmallImage(false);
         setSmallImage1(false);
         setSmallImage2(false);
+        setSmallImage3(false);
       } else {
         canvas.width = 300;
-        canvas.height = imageNumber === 1 ? 361 : 402; 
+        canvas.height = imageNumber === 1 ? 361 : imageNumber === 4 ? 426 : 402; 
         setSmallImage(true);
         setSmallImage1(true);
         setSmallImage2(true);
+        setSmallImage3(true);
       }
     };
 
     setCanvasDimensions();
 
     const effect = imageNumber === 1 ? new mainEffect(canvas) : 
-    imageNumber === 2 ? new effectOne(canvas) : new effectTwo(canvas);
+    imageNumber === 2 ? new effectOne(canvas) : 
+    imageNumber === 3 ? new effectTwo(canvas) : new effectThree(canvas);
     
 
     const animate = () => {
@@ -100,6 +110,15 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber }) => {
           <img 
             src={smallImage2 ? mobileImage2 : Image2}
             id="Image2" 
+            alt="Gurdian Tree by Luna Smith" />
+        </div>
+      )}
+      {(imageNumber === 4) && (
+        <div>
+          <canvas ref={canvasRef3} id="canvas4"></canvas>
+          <img 
+            src={smallImage3 ? mobileImage3 : Image3}
+            id="Image3" 
             alt="Gurdian Tree by Luna Smith" />
         </div>
       )}

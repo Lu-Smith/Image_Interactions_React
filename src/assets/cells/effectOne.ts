@@ -27,17 +27,18 @@ export default class effectOne {
       this.mouse.y = e.offsetY;
     })
 
-    this.canvas.addEventListener('mouseleave', e => {
+    this.canvas.addEventListener('mouseleave', () => {
       this.mouse.x = undefined;
       this.mouse.y = undefined;
-      console.log(e)
     })
 
  }
  createGrid() {
+   let index = 0;
    for (let y = 0; y < this.height; y += this.cellHeight) {
       for (let x = 0; x < this.width; x += this.cellWidth) {
-         this.imageGrid.push(new cellOne(this, x, y));
+        index++;
+        this.imageGrid.unshift(new cellOne(this, x, y, index));
       }
    }
  }

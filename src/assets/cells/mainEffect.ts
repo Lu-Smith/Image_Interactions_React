@@ -20,7 +20,7 @@ export default class mainEffect {
     this.mouse = {
       x: undefined,
       y: undefined,
-      radius: 80,
+      radius: 60,
     }
     this.canvas.addEventListener('mousemove', e => {
       this.mouse.x = e.offsetX;

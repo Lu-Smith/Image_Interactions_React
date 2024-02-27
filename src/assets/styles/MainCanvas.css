@@ -15,10 +15,6 @@
     border: 5px solid #042108;
 }
 
-.MainCanvas #mainImage {
-    display: none;
-}
-
 .MainCanvas #Image1 {
     display: none;
 }
@@ -28,5 +24,9 @@
 }
 
 .MainCanvas #Image3 {
+    display: none;
+}
+
+.MainCanvas #Image4 {
     display: none;
 }

@@ -7,13 +7,30 @@
     width: 100vw;
     height: 100%;
     font-size: 0.8rem;
-    padding: 0 30px;
+    padding: 10px 30px;
 }
 
 .Header h1 {
-    font-family: "Pacifico", serif;
     font-size: 2rem;
     font-weight: bold;
+    font-family: "Bungee Shade", sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+.Header h1 span {
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
+    text-shadow: none;
+    color: #34495e;
+}
+
+.Header.dark h1 span {
+    color: #8ecccc;
+}
+
+.Header.bolt h1 span {
+    color: #f1af36;
 }
 
 .Header div {
@@ -32,6 +49,7 @@
     text-shadow: 2px 2px 2px rgba(247, 195, 97, 0.5);
     border-radius: 50%;
     padding: 8px;
+    border: 2px solid white;
 }
 
 .Header span:hover {
@@ -90,4 +108,18 @@
 
 .Header.bolt div span {
     color: #d8d7d7;
+}
+
+@media screen and (max-width: 786px) {
+    .Header {
+        justify-content: center;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 0.3rem;
+        padding: 10px 0;
+    }
+
+    .Header h1 {
+        height: 120px;
+    }
 }

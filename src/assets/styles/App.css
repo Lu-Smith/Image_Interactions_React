@@ -93,7 +93,9 @@
 
 @media screen and (max-width: 786px) {
     .HeaderContainer {
-        height: 220px;
+        height: 170px;
+        /* padding: 0;
+        margin: 0; */
     }
     .FooterContainer {
         height: 60px;

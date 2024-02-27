@@ -38,6 +38,9 @@ const App = () => {
           <motion.div variants={childVariantsR}  initial="hidden" whileInView={"visible"}>
             <MainCanvas mode={mode} imageNumber={3} />
           </motion.div>
+          <motion.div variants={childVariantsL}  initial="hidden" whileInView={"visible"}>
+            <MainCanvas mode={mode} imageNumber={4} />
+          </motion.div>
         </motion.div>
         <div className={`FooterContainer ${mode}`}>
           <FooterComponent mode={mode} />

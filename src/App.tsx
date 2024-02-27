@@ -46,7 +46,7 @@ const App = () => {
           <Header mode={mode} toggleMode={toggleMode} />
         </div>
         <motion.div className={`CanvasContainer ${mode}`}>
-        {[1, 2, 3, 4].map((imageNumber) => (
+        {[1, 2, 3, 4, 5, 6].map((imageNumber) => (
           <motion.div key={imageNumber} variants={imageNumber % 2 === 0 ? childVariantsL : childVariantsR} initial="hidden" whileInView="visible">
             <MainCanvas 
             mode={mode} 

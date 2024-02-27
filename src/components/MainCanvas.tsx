@@ -51,7 +51,6 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     imageNumber === 2 ? new effectOne(canvas) : 
     imageNumber === 3 ? new effectTwo(canvas) : new effectThree(canvas);
     
-
     const animate = () => {
       effect.render(ctx);
       requestAnimationFrame(animate);
@@ -68,7 +67,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [imageNumber]);
 
   return (
     <div className={`MainCanvas ${mode}`}>

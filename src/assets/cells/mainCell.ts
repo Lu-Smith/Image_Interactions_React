@@ -69,8 +69,8 @@ export default class mainCell {
             if (distance < this.effect.mouse.radius) {
                 const angle = Math.atan2(dy, dx);
                 const force = distance / this.effect.mouse.radius;
-                this.vx = force * Math.cos(angle);
-                this.vy = force * Math.sin(angle);
+                this.vx = force * Math.cos(angle) * 2;
+                this.vy = force * Math.sin(angle) * 6;
             } 
             this.slideX += (this.vx *= this.friction) - this.slideX * this.ease;
             this.slideY += (this.vy *= this.friction) - this.slideY * this.ease;

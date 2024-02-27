@@ -4,6 +4,18 @@ import FooterComponent from './components/FooterComponent';
 import Header from './components/HeaderComponent';
 import MainCanvas from './components/MainCanvas';
 import { motion} from 'framer-motion';
+//image1
+import Image1 from './assets/images/Alps.jpg';
+import mobileImage1 from './assets/images/AlpsSmall.jpg';
+//image2
+import Image2 from './assets/images/Garden.jpg';
+import mobileImage2 from './assets/images/GardenSmall.jpg';
+//image3
+import Image3 from './assets/images/Guardian.jpg';
+import mobileImage3 from './assets/images/GuardianSmall.jpg';
+//image4
+import Image4 from './assets/images/Odin.jpg';
+import mobileImage4 from './assets/images/OdinSmall.jpg';
 
 const childVariantsR = {
   hidden: { x: -270, opacity: 0 },
@@ -27,21 +39,21 @@ const App = () => {
         <div className={`HeaderContainer ${mode}`}>
           <Header mode={mode} toggleMode={toggleMode} />
         </div>
-        <motion.div 
-        className={`CanvasContainer ${mode}`}>
-          <motion.div variants={childVariantsR}  initial="hidden" whileInView={"visible"}>
-            <MainCanvas mode={mode} imageNumber={1} />
+        <motion.div className={`CanvasContainer ${mode}`}>
+        {[1, 2, 3, 4].map((imageNumber) => (
+          <motion.div key={imageNumber} variants={imageNumber % 2 === 0 ? childVariantsL : childVariantsR} initial="hidden" whileInView="visible">
+            <MainCanvas 
+            mode={mode} 
+            imageNumber={imageNumber}   
+            imageData={{
+              1: { mainImage: Image1, mobileImage: mobileImage1 },
+              2: { mainImage: Image2, mobileImage: mobileImage2 },
+              3: { mainImage: Image3, mobileImage: mobileImage3 },
+              4: { mainImage: Image4, mobileImage: mobileImage4 }
+            }} />
           </motion.div>
-          <motion.div variants={childVariantsL}  initial="hidden" whileInView={"visible"}>
-            <MainCanvas mode={mode} imageNumber={2} />
-          </motion.div>
-          <motion.div variants={childVariantsR}  initial="hidden" whileInView={"visible"}>
-            <MainCanvas mode={mode} imageNumber={3} />
-          </motion.div>
-          <motion.div variants={childVariantsL}  initial="hidden" whileInView={"visible"}>
-            <MainCanvas mode={mode} imageNumber={4} />
-          </motion.div>
-        </motion.div>
+        ))}
+      </motion.div>
         <div className={`FooterContainer ${mode}`}>
           <FooterComponent mode={mode} />
         </div>

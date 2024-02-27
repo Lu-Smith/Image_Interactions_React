@@ -10,7 +10,7 @@ interface HeaderProps {
 const HeaderComponent: React.FC<HeaderProps> = ({mode, toggleMode}) => {
   return (
     <div className={`Header ${mode}`}>
-      <h1 className='title'>Image Interactions</h1>
+      <h1 className='title'>IMAGE <span>Interactions</span></h1>
       <div>
       <motion.div  whileHover={{ scale: 1.3 }} whileTap={{ scale: 1.1 }}>
         <span className="material-symbols-outlined light" onClick={() => toggleMode('light')}>

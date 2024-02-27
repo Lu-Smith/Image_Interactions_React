@@ -31,7 +31,7 @@ export default class cellThree {
         this.speedY = 0;
         this.width = this.effect.cellWidth;
         this.height = this.effect.cellHeight;
-        this.image = document.getElementById('Image3') as HTMLCanvasElement;
+        this.image = document.getElementById('Image4') as HTMLCanvasElement;
         this.slideX = 0;
         this.slideY = 0;
         this.vx = 0;

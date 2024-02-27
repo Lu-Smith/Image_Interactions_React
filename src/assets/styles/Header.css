@@ -58,7 +58,7 @@
 }
 
 .Header.light .light {
-    color: #f1af36;
+    color: #f5efe4;
 }
 
 .Header.light .dark {
@@ -70,7 +70,8 @@
 }
 
 .Header.dark .light {
-    color: #f1af36;
+    color: #ee9f0d;
+    background-color: #f2eeee;
 }
 
 .Header.dark .dark {
@@ -82,7 +83,8 @@
 }
 
 .Header.bolt .light {
-    color: #f1af36;
+    color: #ee9f0d;
+    background-color: #f6f3f3;
 }
 
 .Header.bolt .dark {
@@ -110,6 +112,10 @@
     color: #d8d7d7;
 }
 
+.Header h1 span:hover {
+    color: rgb(202, 129, 239);
+}
+
 @media screen and (max-width: 786px) {
     .Header {
         justify-content: center;
@@ -120,6 +126,6 @@
     }
 
     .Header h1 {
-        height: 120px;
+        height: 156px;
     }
 }

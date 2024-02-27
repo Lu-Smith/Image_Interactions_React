@@ -25,8 +25,8 @@ export default class cellOne {
         this.x = x;
         this.y = y;
         this.index = index;
-        this.positionX = this.effect.width * 0.5;
-        this.positionY = this.effect.height * 0.5;
+        this.positionX = 10;
+        this.positionY = this.effect.height * 0.1;
         this.speedX = 0;
         this.speedY = 0;
         this.width = this.effect.cellWidth;
@@ -41,12 +41,17 @@ export default class cellOne {
         this.randomize = Math.random() * 50 + 2;
         setTimeout(() => {
             this.start();
-        }, this.index * 30);
+        }, this.index);
     }
     draw(context: CanvasRenderingContext2D) {
+        setTimeout(() => {
+        context.fillStyle = '#f1b963';
+        context.fillRect(this.x, this.y, this.width, this.height); 
+        context.strokeStyle = 'white';
+        context.strokeRect(this.x, this.y, this.width, this.height); 
+    }, this.index);
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 
             this.width, this.height, this.positionX, this.positionY, this.width, this.height);
-            // context.strokeRect(this.positionX, this.positionY, this.width, this.height);
     }
     start() {
         this.speedX = (this.x - this.positionX)/this.randomize;
@@ -73,5 +78,6 @@ export default class cellOne {
             this.slideX += (this.vx *= this.friction) - this.slideX * this.ease;
             this.slideY += (this.vy *= this.friction) - this.slideY * this.ease;
         }
+        
     }
 }

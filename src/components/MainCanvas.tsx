@@ -8,6 +8,10 @@ import effectOne from '../assets/cells/effectOne';
 import effectTwo from '../assets/cells/effectTwo';
 //image4
 import effectThree from '../assets/cells/effectThree';
+//image5
+import effectFour from '../assets/cells/effectFour';
+//image6
+import effectFive from '../assets/cells/effectFive';
 
 type ImageData = {
   [key in number]: {
@@ -36,20 +40,22 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     const setCanvasDimensions = () => {
       if (window.innerWidth > 540) {
         canvas.width = 500;
-        canvas.height = imageNumber === 2 ? 601 : imageNumber === 4 ? 710 : 669; 
+        canvas.height = (imageNumber === 2 || imageNumber === 5) ? 601 : imageNumber === 4 ? 710 : 669; 
         setSmallImage(false);
       } else {
         canvas.width = 300;
-        canvas.height = imageNumber === 2 ? 361 : imageNumber === 4 ? 426 : 402; 
+        canvas.height = (imageNumber === 2 || imageNumber === 5) ? 361 : imageNumber === 4 ? 426 : 402; 
         setSmallImage(true);
       }
     };
 
     setCanvasDimensions();
 
-    const effect = imageNumber === 2 ? new mainEffect(canvas) : 
+    const effect = imageNumber === 2  ? new mainEffect(canvas) : 
     imageNumber === 1 ? new effectOne(canvas) : 
-    imageNumber === 3 ? new effectTwo(canvas) : new effectThree(canvas);
+    imageNumber === 3 ? new effectTwo(canvas) : 
+    imageNumber === 4 ? new effectThree(canvas) : 
+    imageNumber === 5 ? new effectFour(canvas) : new effectFive(canvas);
     
     const animate = () => {
       effect.render(ctx);

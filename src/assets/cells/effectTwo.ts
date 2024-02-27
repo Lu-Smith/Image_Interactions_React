@@ -13,24 +13,23 @@ export default class effectTwo {
     this.canvas = canvas;
     this.width = this.canvas.width;
     this.height = this.canvas.height;
-    this.cellWidth = this.width / 15;
-    this.cellHeight = this. height / 35;
+    this.cellWidth = this.width / 14;
+    this.cellHeight = this. height / 30;
     this.imageGrid = [];
     this.createGrid();
     this.mouse = {
       x: undefined,
       y: undefined,
-      radius: 80,
+      radius: 40,
     }
     this.canvas.addEventListener('mousemove', e => {
       this.mouse.x = e.offsetX;
       this.mouse.y = e.offsetY;
     })
 
-    this.canvas.addEventListener('mouseleave', e => {
+    this.canvas.addEventListener('mouseleave', () => {
       this.mouse.x = undefined;
       this.mouse.y = undefined;
-      console.log(e)
     })
 
  }

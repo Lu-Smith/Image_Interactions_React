@@ -25,12 +25,11 @@ export default class cellTwo {
         this.slideY = 0;
         this.vx = 0;
         this.vy = 0;
-        this.ease = 0.05;
-        this.friction = 0.8;
+        this.ease = 0.08;
+        this.friction = 0.84;
     }
     draw(context: CanvasRenderingContext2D) {
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, this.width, this.height, this.x, this.y, this.width, this.height);
-        // context.strokeRect(this.x, this.y, this.width, this.height);
     }
     update() {
         if (this.effect.mouse.x && this.effect.mouse.y) {
@@ -40,9 +39,9 @@ export default class cellTwo {
             const distance = Math.hypot(dx, dy);
             if (distance < this.effect.mouse.radius) {
                 const angle = Math.atan2(dy, dx);
-                const force = distance / this.effect.mouse.radius;
-                this.vx = force * Math.cos(angle);
-                this.vy = force * Math.sin(angle);
+                const force = distance / this.effect.mouse.radius * 5;
+                this.vx = force * Math.sin(angle);
+                this.vy = force * Math.cos(angle);
             } 
             this.slideX += (this.vx *= this.friction) - this.slideX * this.ease;
             this.slideY += (this.vy *= this.friction) - this.slideY * this.ease;

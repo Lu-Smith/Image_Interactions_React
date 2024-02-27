@@ -34,21 +34,21 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     if (!ctx) return;
 
     const setCanvasDimensions = () => {
-      if (window.innerWidth > 640) {
-        canvas.width = 600;
-        canvas.height = imageNumber === 1 ? 722 : imageNumber === 4 ? 852 : 804; 
+      if (window.innerWidth > 540) {
+        canvas.width = 500;
+        canvas.height = imageNumber === 2 ? 601 : imageNumber === 4 ? 710 : 669; 
         setSmallImage(false);
       } else {
         canvas.width = 300;
-        canvas.height = imageNumber === 1 ? 361 : imageNumber === 4 ? 426 : 402; 
+        canvas.height = imageNumber === 2 ? 361 : imageNumber === 4 ? 426 : 402; 
         setSmallImage(true);
       }
     };
 
     setCanvasDimensions();
 
-    const effect = imageNumber === 1 ? new mainEffect(canvas) : 
-    imageNumber === 2 ? new effectOne(canvas) : 
+    const effect = imageNumber === 2 ? new mainEffect(canvas) : 
+    imageNumber === 1 ? new effectOne(canvas) : 
     imageNumber === 3 ? new effectTwo(canvas) : new effectThree(canvas);
     
     const animate = () => {

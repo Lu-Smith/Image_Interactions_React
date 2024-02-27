@@ -27,10 +27,9 @@ export default class mainEffect {
       this.mouse.y = e.offsetY;
     })
 
-    this.canvas.addEventListener('mouseleave', e => {
+    this.canvas.addEventListener('mouseleave', () => {
       this.mouse.x = undefined;
       this.mouse.y = undefined;
-      console.log(e)
     })
 
  }

@@ -21,7 +21,7 @@ import Image5 from './assets/images/Paradise.jpg';
 import mobileImage5 from './assets/images/ParadiseSmall.jpg';
 //image6
 import Image6 from './assets/images/Autumn.jpg';
-import mobileImage6 from './assets/images/AlpsSmall.jpg';
+import mobileImage6 from './assets/images/AutumnSmall.jpg';
 
 const childVariantsR = {
   hidden: { x: -270, opacity: 0 },
@@ -56,8 +56,8 @@ const App = () => {
               2: { mainImage: Image2, mobileImage: mobileImage2 },
               3: { mainImage: Image3, mobileImage: mobileImage3 },
               4: { mainImage: Image4, mobileImage: mobileImage4 },
-              5: { mainImage: Image5, mobileImage: mobileImage5 },
-              6: { mainImage: Image6, mobileImage: mobileImage6 }
+              5: { mainImage: Image6, mobileImage: mobileImage6 },
+              6: { mainImage: Image5, mobileImage: mobileImage5 }
             }} />
           </motion.div>
         ))}

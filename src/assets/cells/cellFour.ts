@@ -25,8 +25,8 @@ export default class cellFour {
         this.x = x;
         this.y = y;
         this.index = index;
-        this.positionX = this.effect.width * 0.4;
-        this.positionY = this.effect.height * 1.3;
+        this.positionX = this.effect.width * 0.98;
+        this.positionY = this.effect.height * 0.3;
         this.speedX = 0;
         this.speedY = 0;
         this.width = this.effect.cellWidth;

@@ -3,7 +3,6 @@ import { useState } from 'react';
 import FooterComponent from './components/FooterComponent';
 import Header from './components/HeaderComponent';
 import MainCanvas from './components/MainCanvas';
-import { motion} from 'framer-motion';
 //image1
 import Image1 from './assets/images/Alps.jpg';
 import mobileImage1 from './assets/images/AlpsSmall.jpg';
@@ -23,16 +22,6 @@ import mobileImage5 from './assets/images/ParadiseSmall.jpg';
 import Image6 from './assets/images/Autumn.jpg';
 import mobileImage6 from './assets/images/AutumnSmall.jpg';
 
-const childVariantsR = {
-  hidden: { x: -270, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { delay: 0.2, duration: 1 } },
-};
-
-const childVariantsL = {
-  hidden: { x: 270, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { delay: 0.2, duration: 1 } },
-};
-
 const App = () => {  
   const [mode, setMode] = useState('light');
 
@@ -40,28 +29,42 @@ const App = () => {
     setMode(modeName);
   };
 
+  const [currentImage, setCurrentImage] = useState<number>(1);
+  
+  const handleNextImage = () => {
+    setCurrentImage((prevImage) => (prevImage === 6 ? 1 : prevImage + 1));
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImage((prevImage) => (prevImage === 1 ? 6 : prevImage - 1));
+  };
+
+  const imageData: { [key: number]: { mainImage: string; mobileImage: string } } = {
+    1: { mainImage: Image1, mobileImage: mobileImage1 },
+    2: { mainImage: Image2, mobileImage: mobileImage2 },
+    3: { mainImage: Image3, mobileImage: mobileImage3 },
+    4: { mainImage: Image4, mobileImage: mobileImage4 },
+    5: { mainImage: Image5, mobileImage: mobileImage5 },
+    6: { mainImage: Image6, mobileImage: mobileImage6 },
+  };
+
   return (
     <div className={`App ${mode}`}>
         <div className={`HeaderContainer ${mode}`}>
           <Header mode={mode} toggleMode={toggleMode} />
         </div>
-        <motion.div className={`CanvasContainer ${mode}`}>
-        {[1, 2, 3, 4, 5, 6].map((imageNumber) => (
-          <motion.div key={imageNumber} variants={imageNumber % 2 === 0 ? childVariantsL : childVariantsR} initial="hidden" whileInView="visible">
+        <div className={`ButtonsContainer ${mode}`}>
+          <button onClick={handlePrevImage}>Previous</button>
+          <button onClick={handleNextImage}>Next</button>
+        </div>
+        <div className={`CanvasContainer ${mode}`}>
+          <div>
             <MainCanvas 
             mode={mode} 
-            imageNumber={imageNumber}   
-            imageData={{
-              1: { mainImage: Image1, mobileImage: mobileImage1 },
-              2: { mainImage: Image2, mobileImage: mobileImage2 },
-              3: { mainImage: Image3, mobileImage: mobileImage3 },
-              4: { mainImage: Image4, mobileImage: mobileImage4 },
-              5: { mainImage: Image6, mobileImage: mobileImage6 },
-              6: { mainImage: Image5, mobileImage: mobileImage5 }
-            }} />
-          </motion.div>
-        ))}
-      </motion.div>
+            imageNumber={currentImage}   
+            imageData={imageData[currentImage]} />
+          </div>
+      </div>
         <div className={`FooterContainer ${mode}`}>
           <FooterComponent mode={mode} />
         </div>

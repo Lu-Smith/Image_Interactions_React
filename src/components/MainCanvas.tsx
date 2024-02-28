@@ -1,17 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../assets/styles/MainCanvas.css';
-//image1
-import mainEffect from '../assets/cells/mainEffect';
-//image2
-import effectOne from '../assets/cells/effectOne';
-//image3
-import effectTwo from '../assets/cells/effectTwo';
-//image4
-import effectThree from '../assets/cells/effectThree';
-//image5
-import effectFour from '../assets/cells/effectFour';
-//image6
-import effectFive from '../assets/cells/effectFive';
+import effect1 from '../assets/cells/effect1';
 
 interface ImageData {
     mainImage: string;
@@ -51,11 +40,19 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
 
     setCanvasDimensions();
 
-    const effect = imageNumber === 1  ? new mainEffect(canvas) : 
-    imageNumber === 2 ? new effectOne(canvas) : 
-    imageNumber === 3 ? new effectTwo(canvas) : 
-    imageNumber === 4 ? new effectThree(canvas) : 
-    imageNumber === 5 ? new effectFive(canvas) : new effectFour(canvas);
+    const effectsParams = [
+      { radius: 60, columnCells: 10, rowCells: 12 },
+      { radius: 80, columnCells: 15, rowCells: 35 },
+      { radius: 40, columnCells: 14, rowCells: 30 },
+      { radius: 60, columnCells: 10, rowCells: 15 },
+      { radius: 60, columnCells: 8, rowCells: 12 },
+  ];
+  
+  const defaultParams = { radius: 60, columnCells: 10, rowCells: 15 };
+  
+  const effectParams = effectsParams[imageNumber - 1] || defaultParams;
+  
+  const effect = new effect1(canvas, effectParams.radius, effectParams.columnCells, effectParams.rowCells, imageNumber);
     
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);

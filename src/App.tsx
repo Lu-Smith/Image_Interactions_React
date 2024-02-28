@@ -29,7 +29,7 @@ const App = () => {
     setMode(modeName);
   };
 
-  const [currentImage, setCurrentImage] = useState<number>(1);
+  const [currentImage, setCurrentImage] = useState<number>(5);
   
   const handleNextImage = () => {
     setCurrentImage((prevImage) => (prevImage === 6 ? 1 : prevImage + 1));

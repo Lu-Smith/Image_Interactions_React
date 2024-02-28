@@ -36,7 +36,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     if (!ctx) return;
 
     const setCanvasDimensions = () => {
-      if (window.innerWidth > 50) {
+      if (window.innerWidth > 500) {
         canvas.width = 400;
         canvas.height = imageNumber === 1 ? 481 : imageNumber === 2 ? 535 : 
         imageNumber === 3 ? 542 : imageNumber === 4 ? 568 : imageNumber === 6 ? 479 : 560;  
@@ -58,12 +58,13 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     imageNumber === 5 ? new effectFive(canvas) : new effectFour(canvas);
     
     const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       effect.render(ctx);
       requestAnimationFrame(animate);
     }
 
     requestAnimationFrame(animate);
-
+  
     const handleResize = () => {
       setCanvasDimensions();
     };
@@ -73,6 +74,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+
   }, [imageNumber]);
 
   return (

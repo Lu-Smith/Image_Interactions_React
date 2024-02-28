@@ -29,7 +29,7 @@ const App = () => {
     setMode(modeName);
   };
 
-  const [currentImage, setCurrentImage] = useState<number>(5);
+  const [currentImage, setCurrentImage] = useState<number>(1);
   
   const handleNextImage = () => {
     setCurrentImage((prevImage) => (prevImage === 6 ? 1 : prevImage + 1));
@@ -44,8 +44,8 @@ const App = () => {
     2: { mainImage: Image2, mobileImage: mobileImage2 },
     3: { mainImage: Image3, mobileImage: mobileImage3 },
     4: { mainImage: Image4, mobileImage: mobileImage4 },
-    5: { mainImage: Image5, mobileImage: mobileImage5 },
-    6: { mainImage: Image6, mobileImage: mobileImage6 },
+    5: { mainImage: Image6, mobileImage: mobileImage6 },
+    6: { mainImage: Image5, mobileImage: mobileImage5 },
   };
 
   return (

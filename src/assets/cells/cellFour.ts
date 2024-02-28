@@ -1,4 +1,5 @@
 import effectFour from "./effectFour"
+import Image5 from '../images/Paradise.jpg';
 
 export default class cellFour {
     effect: effectFour;
@@ -6,7 +7,7 @@ export default class cellFour {
     y: number;
     width: number;
     height: number;
-    image: CanvasImageSource;
+    image: HTMLImageElement;
     slideX: number;
     slideY: number;
     vx: number;
@@ -31,7 +32,9 @@ export default class cellFour {
         this.speedY = 0;
         this.width = this.effect.cellWidth;
         this.height = this.effect.cellHeight;
-        this.image = document.getElementById('Image5') as HTMLCanvasElement;
+        this.image = new Image();
+        this.image.src = Image5;
+        // this.image = document.getElementById('Image5') as HTMLCanvasElement;
         this.slideX = 0;
         this.slideY = 0;
         this.vx = 0;
@@ -45,7 +48,7 @@ export default class cellFour {
     }
     draw(context: CanvasRenderingContext2D) {
         setTimeout(() => {
-            context.strokeStyle = 'pink';
+            context.strokeStyle = 'blue';
             context.strokeRect(this.positionX, this.positionY, this.width, this.height);
         }, this.index * 2);  
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 

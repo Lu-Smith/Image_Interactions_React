@@ -1,4 +1,5 @@
 import effectTwo from "./effectTwo"
+import Image3 from '../images/Guardian.jpg';
 
 export default class cellTwo {
     effect: effectTwo;
@@ -6,7 +7,7 @@ export default class cellTwo {
     y: number;
     width: number;
     height: number;
-    image: CanvasImageSource;
+    image: HTMLImageElement;
     slideX: number;
     slideY: number;
     vx: number;
@@ -20,7 +21,9 @@ export default class cellTwo {
         this.y = y;
         this.width = this.effect.cellWidth;
         this.height = this.effect.cellHeight;
-        this.image = document.getElementById('Image3') as HTMLCanvasElement;
+        this.image = new Image();
+        this.image.src = Image3;
+        // this.image = document.getElementById('Image3') as HTMLCanvasElement;
         this.slideX = 0;
         this.slideY = 0;
         this.vx = 0;

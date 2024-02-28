@@ -27,8 +27,8 @@ export default class cellFive {
         this.x = x;
         this.y = y;
         this.index = index;
-        this.positionX = this.effect.width * 0.4;
-        this.positionY = this.effect.height * 1.3;
+        this.positionX = this.effect.width * 0.1;
+        this.positionY = this.effect.height;
         this.speedX = 0;
         this.speedY = 0;
         this.width = this.effect.cellWidth;
@@ -38,16 +38,17 @@ export default class cellFive {
         this.slideY = 0;
         this.vx = 0;
         this.vy = 0;
-        this.ease = 0.08;
-        this.friction = 0.7;
-        this.randomize = Math.random() * 40 + 8;
+        this.ease = 0.1;
+        this.friction = 0.75;
+        this.randomize = Math.random() * 50 + 6;
         setTimeout(() => {
             this.start();
-        }, this.index * 3);
+        }, this.index * 2);
     }
     draw(context: CanvasRenderingContext2D) {
         setTimeout(() => {
-            context.strokeStyle = 'pink';
+            context.strokeStyle = 'black';
+            context.lineWidth = 20;
             context.strokeRect(this.positionX, this.positionY, this.width, this.height);
         }, this.index * 2);  
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 

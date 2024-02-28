@@ -1,5 +1,4 @@
 import mainEffect from "./mainEffect"
-import Image1 from '../images/Alps.jpg';
 
 export default class mainCell {
     effect: mainEffect;
@@ -7,7 +6,7 @@ export default class mainCell {
     y: number;
     width: number;
     height: number;
-    image: HTMLImageElement;
+    image: HTMLCanvasElement;
     slideX: number;
     slideY: number;
     vx: number;
@@ -32,9 +31,7 @@ export default class mainCell {
         this.speedY = 0;
         this.width = this.effect.cellWidth;
         this.height = this.effect.cellHeight;
-        this.image = new Image();
-        this.image.src = Image1;
-        // this.image = document.getElementById('Image1') as HTMLCanvasElement;
+        this.image = document.getElementById('Image1') as HTMLCanvasElement;
         this.slideX = 0;
         this.slideY = 0;
         this.vx = 0;

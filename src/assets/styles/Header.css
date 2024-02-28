@@ -121,11 +121,11 @@
         justify-content: center;
         flex-direction: column;
         gap: 1px;
-        font-size: 0.2rem;
         padding: 10px 0;
     }
 
     .Header h1 {
         height: 156px;
+        font-size: 1.5rem;
     }
 }

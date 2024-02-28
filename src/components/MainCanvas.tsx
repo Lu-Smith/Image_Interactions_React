@@ -27,13 +27,11 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     const setCanvasDimensions = () => {
       if (window.innerWidth > 500) {
         canvas.width = 400;
-        canvas.height = imageNumber === 1 ? 481 : imageNumber === 2 ? 535 : 
-        imageNumber === 3 ? 542 : imageNumber === 4 ? 568 : imageNumber === 6 ? 479 : 560;  
+        canvas.height = [481, 535, 542, 568, 0, 479, 560][imageNumber - 1] || 0; 
         setSmallImage(false);
       } else {
         canvas.width = 270;
-        canvas.height = imageNumber === 1 ? 325 : imageNumber === 2 ? 362 : 
-        imageNumber === 2 ? 365 : imageNumber === 4 ? 383 : imageNumber === 6 ? 359 : 378; 
+        canvas.height = [325, 362, 365, 383, 0, 359, 378][imageNumber - 1] || 0;
         setSmallImage(true);
       }
     };
@@ -41,18 +39,18 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     setCanvasDimensions();
 
     const effectsParams = [
-      { radius: 60, columnCells: 10, rowCells: 12 },
-      { radius: 80, columnCells: 15, rowCells: 35 },
-      { radius: 40, columnCells: 14, rowCells: 30 },
-      { radius: 60, columnCells: 10, rowCells: 15 },
-      { radius: 60, columnCells: 8, rowCells: 12 },
-  ];
-  
-  const defaultParams = { radius: 60, columnCells: 10, rowCells: 15 };
-  
-  const effectParams = effectsParams[imageNumber - 1] || defaultParams;
-  
-  const effect = new effect1(canvas, effectParams.radius, effectParams.columnCells, effectParams.rowCells, imageNumber);
+        { radius: 60, columnCells: 10, rowCells: 12 },
+        { radius: 80, columnCells: 15, rowCells: 35 },
+        { radius: 40, columnCells: 14, rowCells: 30 },
+        { radius: 60, columnCells: 10, rowCells: 15 },
+        { radius: 60, columnCells: 8, rowCells: 12 },
+    ];
+    
+    const defaultParams = { radius: 60, columnCells: 10, rowCells: 15 };
+    
+    const effectParams = effectsParams[imageNumber - 1] || defaultParams;
+    
+    const effect = new effect1(canvas, effectParams.radius, effectParams.columnCells, effectParams.rowCells, imageNumber);
     
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -60,7 +58,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
       requestAnimationFrame(animate);
     }
 
-    requestAnimationFrame(animate);
+    animate();
   
     const handleResize = () => {
       setCanvasDimensions();

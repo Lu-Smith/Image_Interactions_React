@@ -39,23 +39,23 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
       if (window.innerWidth > 50) {
         canvas.width = 400;
         canvas.height = imageNumber === 1 ? 481 : imageNumber === 2 ? 535 : 
-        imageNumber === 3 ? 542 : imageNumber === 4 ? 568 : imageNumber === 5 ? 479 : 560;  
+        imageNumber === 3 ? 542 : imageNumber === 4 ? 568 : imageNumber === 6 ? 479 : 560;  
         setSmallImage(false);
       } else {
-        canvas.width = 300;
-        canvas.height = imageNumber === 1 ? 361 : imageNumber === 2 ? 426 : 
-        imageNumber === 2 ? 568 : imageNumber === 4 ? 568 : imageNumber === 5 ? 568 : 535; 
+        canvas.width = 270;
+        canvas.height = imageNumber === 1 ? 325 : imageNumber === 2 ? 362 : 
+        imageNumber === 2 ? 365 : imageNumber === 4 ? 383 : imageNumber === 6 ? 359 : 378; 
         setSmallImage(true);
       }
     };
 
     setCanvasDimensions();
 
-    const effect = imageNumber === 2  ? new mainEffect(canvas) : 
-    imageNumber === 1 ? new effectOne(canvas) : 
+    const effect = imageNumber === 1  ? new mainEffect(canvas) : 
+    imageNumber === 2 ? new effectOne(canvas) : 
     imageNumber === 3 ? new effectTwo(canvas) : 
     imageNumber === 4 ? new effectThree(canvas) : 
-    imageNumber === 6 ? new effectFive(canvas) : new effectFour(canvas);
+    imageNumber === 5 ? new effectFive(canvas) : new effectFour(canvas);
     
     const animate = () => {
       effect.render(ctx);

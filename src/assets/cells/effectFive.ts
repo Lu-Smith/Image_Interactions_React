@@ -15,8 +15,8 @@ export default class effectFive
     this.canvas = canvas;
     this.width = this.canvas.width;
     this.height = this.canvas.height;
-    this.cellWidth = this.width / 10;
-    this.cellHeight = this. height / 15;
+    this.cellWidth = this.width / 8;
+    this.cellHeight = this. height / 12;
     this.imageGrid = [];
     this.createGrid();
     this.mouse = {

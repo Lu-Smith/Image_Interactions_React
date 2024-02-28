@@ -13,11 +13,9 @@ import effectFour from '../assets/cells/effectFour';
 //image6
 import effectFive from '../assets/cells/effectFive';
 
-type ImageData = {
-  [key in number]: {
+interface ImageData {
     mainImage: string;
     mobileImage: string;
-  };
 }
 
 interface MainProps {
@@ -38,13 +36,15 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     if (!ctx) return;
 
     const setCanvasDimensions = () => {
-      if (window.innerWidth > 540) {
-        canvas.width = 500;
-        canvas.height = (imageNumber === 2 || imageNumber === 6) ? 601 : imageNumber === 4 ? 710 : 669; 
+      if (window.innerWidth > 50) {
+        canvas.width = 400;
+        canvas.height = imageNumber === 1 ? 481 : imageNumber === 2 ? 535 : 
+        imageNumber === 3 ? 542 : imageNumber === 4 ? 568 : imageNumber === 5 ? 479 : 560;  
         setSmallImage(false);
       } else {
         canvas.width = 300;
-        canvas.height = (imageNumber === 2 || imageNumber === 6) ? 361 : imageNumber === 4 ? 426 : 402; 
+        canvas.height = imageNumber === 1 ? 361 : imageNumber === 2 ? 426 : 
+        imageNumber === 2 ? 568 : imageNumber === 4 ? 568 : imageNumber === 5 ? 568 : 535; 
         setSmallImage(true);
       }
     };
@@ -80,7 +80,7 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
         <div>
           <canvas ref={canvasRef} id="canvas1"></canvas>
           <img
-          src={smallImage ? imageData[imageNumber].mobileImage : imageData[imageNumber].mainImage}
+          src={smallImage ? imageData.mobileImage : imageData.mainImage}
           id={`Image${imageNumber}`}
           alt={`Image ${imageNumber} by Luna Smith`}
         />

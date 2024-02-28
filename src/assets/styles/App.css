@@ -3,62 +3,108 @@
 .App {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     font-family: "Irish Grover", system-ui;
     letter-spacing: 1px;
     font-weight: bold;
 }
 
-.App .light {
+.App.light {
     color: #34495e;
     background-color: #f4f7f7;
 }
 
-.App .dark {
+.App.dark {
     color: #8ecccc;
     background-color: black;
 }
 
-.App .bolt {
+.App.bolt {
     color: #d8d7d7;
     background-color: #ffe700;
 }
 
-.HeaderContainer, .CanvasContainer, .FooterContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .HeaderContainer {
     height: 120px;
-    flex: 0 0 auto;
 }
 
-.HeaderContainer .light {
+.HeaderContainer.light {
     background-color:  #aacfd0;
 }
 
-.HeaderContainer .dark {
+.HeaderContainer.dark {
     background-color:  #3a4042;
 }
 
-.HeaderContainer .bolt {
+.HeaderContainer.bolt {
     background-color:  #613864;
 }
 
+.ButtonsContainer {
+    background-color: #613864;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 100vw;
+}
+
+button {
+    padding: 10px 20px;
+    color: #f5efe4;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+    color: #efce90;
+    border-radius: 10px;
+    font-weight: 400;
+    box-shadow: none;
+}
+
+.ButtonsContainer.light button {
+    background-color:  #5da0a2;
+    border: 2px solid #3d696a;
+}
+
+.ButtonsContainer.light button:hover {
+    background-color:  #406f70;
+    border: 2px solid #3d696a;
+}
+
+.ButtonsContainer.dark  button {
+    background-color: #3a4042;
+    border: 2px solid #7b8a91;
+}
+
+.ButtonsContainer.dark  button:hover {
+    background-color: #121415;
+    border: 2px solid #444c50;
+}
+
+.ButtonsContainer.bolt  button {
+    background-color: #fe4e6e;
+    border: 2px solid #962d40;   
+}
+
+.ButtonsContainer.bolt  button:hover {
+    background-color: #c23b54;
+    border: 2px solid #5b1a26;   
+}
+
 .CanvasContainer {
-    flex: 1; 
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 10px;
-    gap: 40px;
-    width: 100%;
-    height: 100%;
-    padding: 20px 0;
+    background-color: green;
 }
 
 .CanvasContainer .light {
@@ -75,7 +121,6 @@
 
 .FooterContainer {
     height: 80px;
-    flex: 0 0 auto;
 }
 
 .FooterContainer .light {
@@ -90,19 +135,9 @@
     background-color: #fe4e6e;
 }
 
-@media screen and (max-width: 1300px) {
-    .CanvasContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-    }
-}
-
 @media screen and (max-width: 786px) {
     .HeaderContainer {
-        height: 130px;
+        height: 160px;
     }
 
     .FooterContainer {

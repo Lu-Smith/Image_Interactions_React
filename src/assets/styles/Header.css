@@ -57,41 +57,15 @@
     text-shadow: none;
 }
 
-.Header.light .light {
-    color: #f5efe4;
-}
-
-.Header.light .dark {
-    color: #f5f4eb;
-}
-
-.Header.light .bolt {
-    color: #ff004d;
-}
-
-.Header.dark .light {
+.Header.light .light, .Header.dark .light, .Header.bolt .light {
     color: #ee9f0d;
-    background-color: #f2eeee;
 }
 
-.Header.dark .dark {
+.Header.light .dark, .Header.dark .dark, .Header.bolt .dark {
     color: #f5f4eb;
 }
 
-.Header.dark .bolt {
-    color: #ff004d;
-}
-
-.Header.bolt .light {
-    color: #ee9f0d;
-    background-color: #f6f3f3;
-}
-
-.Header.bolt .dark {
-    color: #f5f4eb;
-}
-
-.Header.bolt .bolt {
+.Header.light .bolt, .Header.dark .bolt, .Header.bolt .bolt {
     color: #ff004d;
 }
 

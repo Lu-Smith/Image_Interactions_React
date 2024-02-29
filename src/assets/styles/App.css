@@ -43,69 +43,11 @@
     background-color:  #613864;
 }
 
-.ButtonsContainer {
-    background-color: #613864;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 20px;
-    width: 100vw;
-}
-
-button {
-    padding: 10px 0;
-    color: #f5efe4;
-    font-size: 0.9rem;
-    border-radius: 5px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 200ms ease-in-out;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-    width: 110px;
-}
-
-button:hover {
-    color: #efce90;
-    border-radius: 10px;
-    font-weight: 400;
-    box-shadow: none;
-}
-
-.ButtonsContainer.light button {
-    background-color:  #5da0a2;
-    border: 2px solid #3d696a;
-}
-
-.ButtonsContainer.light button:hover {
-    background-color:  #406f70;
-    border: 2px solid #3d696a;
-}
-
-.ButtonsContainer.dark  button {
-    background-color: #3a4042;
-    border: 2px solid #7b8a91;
-}
-
-.ButtonsContainer.dark  button:hover {
-    background-color: #121415;
-    border: 2px solid #444c50;
-}
-
-.ButtonsContainer.bolt  button {
-    background-color: #fe4e6e;
-    border: 2px solid #962d40;   
-}
-
-.ButtonsContainer.bolt  button:hover {
-    background-color: #c23b54;
-    border: 2px solid #5b1a26;   
-}
-
 .CanvasContainer {
-    background-color: green;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 30px 0;
 }
 
 .CanvasContainer .light {
@@ -134,6 +76,20 @@ button:hover {
 
 .FooterContainer .bolt {
     background-color: #fe4e6e;
+}
+
+@media screen and (max-width: 1350px) {
+    .CanvasContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .CanvasContainer {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
 }
 
 @media screen and (max-width: 786px) {

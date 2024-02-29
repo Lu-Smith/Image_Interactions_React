@@ -24,8 +24,6 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationId: number;
-
     const effectsParams = [
       { radius: 60, columnCells: 10, rowCells: 12 },
       { radius: 80, columnCells: 15, rowCells: 35 },
@@ -44,11 +42,11 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     const setCanvasDimensions = () => {
       if (window.innerWidth > 500) {
         canvas.width = 400;
-        canvas.height = [481, 535, 542, 568, 560, 479][imageNumber - 1] || 0; 
+        canvas.height = [535, 481, 542, 568, 560, 479][imageNumber - 1] || 0; 
         setSmallImage(false);
       } else {
         canvas.width = 270;
-        canvas.height = [325, 362, 365, 383, 378, 359][imageNumber - 1] || 0;
+        canvas.height = [362, 325, 365, 383, 378, 359][imageNumber - 1] || 0;
         setSmallImage(true);
       }
     };
@@ -56,17 +54,11 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       effect.render(ctx);
-      animationId = requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     }
-
-    const startAnimation = () => {
-      cancelAnimationFrame(animationId); 
       animate(); 
-      console.log('animation started');
-  };
-
+ 
     setCanvasDimensions();
-    startAnimation();
   
     const handleResize = () => {
       setCanvasDimensions();
@@ -75,8 +67,6 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      cancelAnimationFrame(animationId);
-      console.log('animation canceled');
       window.removeEventListener('resize', handleResize);
     };
 

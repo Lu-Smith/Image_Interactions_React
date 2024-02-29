@@ -59,16 +59,6 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
       animate(); 
  
     setCanvasDimensions();
-  
-    const handleResize = () => {
-      setCanvasDimensions();
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
 
   }, [imageNumber]);
 

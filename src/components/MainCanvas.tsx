@@ -25,15 +25,15 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     if (!ctx) return;
 
     const effectsParams = [
-      { radius: 60, columnCells: 10, rowCells: 12 },
-      { radius: 80, columnCells: 15, rowCells: 35 },
-      { radius: 40, columnCells: 14, rowCells: 30 },
+      { radius: 60, columnCells: 9, rowCells: 12 },
+      { radius: 80, columnCells: 14, rowCells: 30 },
+      { radius: 40, columnCells: 12, rowCells: 28 },
       { radius: 60, columnCells: 10, rowCells: 15 },
       { radius: 60, columnCells: 8, rowCells: 12 },
       { radius: 50, columnCells: 4, rowCells: 10 }
   ];
   
-  const defaultParams = { radius: 60, columnCells: 10, rowCells: 15 };
+  const defaultParams = { radius: 60, columnCells: 9, rowCells: 12 };
   
   const effectParams = effectsParams[imageNumber - 1] || defaultParams;
   

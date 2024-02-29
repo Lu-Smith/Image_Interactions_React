@@ -39,6 +39,7 @@ export default class effect1 {
 
  }
  createGrid(imageNumber: number) {
+  this.imageGrid = []; 
   let index = 0;
    for (let y = 0; y < this.height; y += this.cellHeight) {
       for (let x = 0; x < this.width; x += this.cellWidth) {

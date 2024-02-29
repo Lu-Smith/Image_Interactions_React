@@ -29,16 +29,6 @@ const App = () => {
     setMode(modeName);
   };
 
-  const [currentImage, setCurrentImage] = useState<number>(1);
-  
-  const handleNextImage = () => {
-    setCurrentImage((prevImage) => (prevImage === 6 ? 1 : prevImage + 1));
-  };
-
-  const handlePrevImage = () => {
-    setCurrentImage((prevImage) => (prevImage === 1 ? 6 : prevImage - 1));
-  };
-
   const imageData: { [key: number]: { mainImage: string; mobileImage: string } } = {
     1: { mainImage: Image1, mobileImage: mobileImage1 },
     2: { mainImage: Image2, mobileImage: mobileImage2 },
@@ -53,16 +43,42 @@ const App = () => {
         <div className={`HeaderContainer ${mode}`}>
           <Header mode={mode} toggleMode={toggleMode} />
         </div>
-        <div className={`ButtonsContainer ${mode}`}>
-          <button onClick={handlePrevImage}>Previous</button>
-          <button onClick={handleNextImage}>Next</button>
-        </div>
         <div className={`CanvasContainer ${mode}`}>
           <div>
             <MainCanvas 
             mode={mode} 
-            imageNumber={currentImage}   
-            imageData={imageData[currentImage]} />
+            imageNumber={1}   
+            imageData={imageData[1]} />
+          </div>
+          <div>
+            <MainCanvas 
+            mode={mode} 
+            imageNumber={2}   
+            imageData={imageData[2]} />
+          </div>
+          <div>
+            <MainCanvas 
+            mode={mode} 
+            imageNumber={3}   
+            imageData={imageData[3]} />
+          </div>
+          <div>
+            <MainCanvas 
+            mode={mode} 
+            imageNumber={4}   
+            imageData={imageData[4]} />
+          </div>
+          <div>
+            <MainCanvas 
+            mode={mode} 
+            imageNumber={6}   
+            imageData={imageData[6]} />
+          </div>
+          <div>
+            <MainCanvas 
+            mode={mode} 
+            imageNumber={5}   
+            imageData={imageData[5]} />
           </div>
       </div>
         <div className={`FooterContainer ${mode}`}>

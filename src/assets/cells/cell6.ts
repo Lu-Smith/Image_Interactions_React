@@ -44,10 +44,8 @@ export default class cell6 {
         }, this.index * 3);
     }
     draw(context: CanvasRenderingContext2D) {
-        setTimeout(() => {
-            context.strokeStyle = 'blue';
-            context.strokeRect(this.positionX, this.positionY, this.width, this.height);
-        }, this.index * 2);  
+        context.strokeStyle = '#5585b5';
+        context.strokeRect(this.positionX, this.positionY, this.width, this.height); 
         context.drawImage(this.image, this.x + this.slideX, this.y + this.slideY, 
             this.width, this.height, this.positionX, this.positionY, this.width, this.height);
     

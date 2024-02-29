@@ -24,41 +24,49 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    let animationId: number;
+
+    const effectsParams = [
+      { radius: 60, columnCells: 10, rowCells: 12 },
+      { radius: 80, columnCells: 15, rowCells: 35 },
+      { radius: 40, columnCells: 14, rowCells: 30 },
+      { radius: 60, columnCells: 10, rowCells: 15 },
+      { radius: 60, columnCells: 8, rowCells: 12 },
+      { radius: 50, columnCells: 4, rowCells: 10 }
+  ];
+  
+  const defaultParams = { radius: 60, columnCells: 10, rowCells: 15 };
+  
+  const effectParams = effectsParams[imageNumber - 1] || defaultParams;
+  
+  const effect = new effect1(canvas, effectParams.radius, effectParams.columnCells, effectParams.rowCells, imageNumber);
+
     const setCanvasDimensions = () => {
       if (window.innerWidth > 500) {
         canvas.width = 400;
-        canvas.height = [481, 535, 542, 568, 0, 479, 560][imageNumber - 1] || 0; 
+        canvas.height = [481, 535, 542, 568, 560, 479][imageNumber - 1] || 0; 
         setSmallImage(false);
       } else {
         canvas.width = 270;
-        canvas.height = [325, 362, 365, 383, 0, 359, 378][imageNumber - 1] || 0;
+        canvas.height = [325, 362, 365, 383, 378, 359][imageNumber - 1] || 0;
         setSmallImage(true);
       }
     };
 
-    setCanvasDimensions();
-
-    const effectsParams = [
-        { radius: 60, columnCells: 10, rowCells: 12 },
-        { radius: 80, columnCells: 15, rowCells: 35 },
-        { radius: 40, columnCells: 14, rowCells: 30 },
-        { radius: 60, columnCells: 10, rowCells: 15 },
-        { radius: 60, columnCells: 8, rowCells: 12 },
-    ];
-    
-    const defaultParams = { radius: 60, columnCells: 10, rowCells: 15 };
-    
-    const effectParams = effectsParams[imageNumber - 1] || defaultParams;
-    
-    const effect = new effect1(canvas, effectParams.radius, effectParams.columnCells, effectParams.rowCells, imageNumber);
-    
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       effect.render(ctx);
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     }
 
-    animate();
+    const startAnimation = () => {
+      cancelAnimationFrame(animationId); 
+      animate(); 
+      console.log('animation started');
+  };
+
+    setCanvasDimensions();
+    startAnimation();
   
     const handleResize = () => {
       setCanvasDimensions();
@@ -67,6 +75,8 @@ const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {
     window.addEventListener('resize', handleResize);
 
     return () => {
+      cancelAnimationFrame(animationId);
+      console.log('animation canceled');
       window.removeEventListener('resize', handleResize);
     };
 

@@ -11,6 +11,7 @@ interface MainProps {
   mode: string;
   imageNumber: number;
   imageData: ImageData;
+  onClick: () => void;
 }
 
 const MainCanvas: React.FC<MainProps> = ({ mode, imageNumber, imageData }) => {

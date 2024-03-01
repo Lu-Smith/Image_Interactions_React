@@ -12,35 +12,30 @@ import mobileImage2 from './assets/images/GardenSmall.jpg';
 //image3
 import Image3 from './assets/images/Guardian.jpg';
 import mobileImage3 from './assets/images/GuardianSmall.jpg';
-// //image4
-// import Image4 from './assets/images/Odin.jpg';
-// import mobileImage4 from './assets/images/OdinSmall.jpg';
-// //image5
-// import Image5 from './assets/images/Paradise.jpg';
-// import mobileImage5 from './assets/images/ParadiseSmall.jpg';
-// //image6
-// import Image6 from './assets/images/Autumn.jpg';
-// import mobileImage6 from './assets/images/AutumnSmall.jpg';
+//image4
+import Image4 from './assets/images/Odin.jpg';
+import mobileImage4 from './assets/images/OdinSmall.jpg';
+//image5
+import Image5 from './assets/images/Paradise.jpg';
+import mobileImage5 from './assets/images/ParadiseSmall.jpg';
+//image6
+import Image6 from './assets/images/Autumn.jpg';
+import mobileImage6 from './assets/images/AutumnSmall.jpg';
 
 const App = () => {  
   const [mode, setMode] = useState('light');
-  const [rerenderKey, setRerenderKey] = useState(0);
 
   const toggleMode = (modeName: string) => {
     setMode(modeName);
   };
 
-  const handleImageClick = () => {
-    setRerenderKey(prevKey => prevKey + 1);
-  }
-
   const imageData: { [key: number]: { mainImage: string; mobileImage: string } } = {
     1: { mainImage: Image1, mobileImage: mobileImage1 },
     2: { mainImage: Image2, mobileImage: mobileImage2 },
     3: { mainImage: Image3, mobileImage: mobileImage3 },
-    // 4: { mainImage: Image4, mobileImage: mobileImage4 },
-    // 5: { mainImage: Image6, mobileImage: mobileImage6 },
-    // 6: { mainImage: Image5, mobileImage: mobileImage5 },
+    4: { mainImage: Image4, mobileImage: mobileImage4 },
+    5: { mainImage: Image6, mobileImage: mobileImage6 },
+    6: { mainImage: Image5, mobileImage: mobileImage5 },
   };
 
   return (
@@ -52,11 +47,9 @@ const App = () => {
         {Object.keys(imageData).map(key => (
           <div key={key}>
             <MainCanvas 
-                key={rerenderKey} 
-                mode={mode} 
-                imageNumber={parseInt(key)}   
-                imageData={imageData[parseInt(key)]} 
-                onClick={handleImageClick} 
+              mode={mode} 
+              imageNumber={parseInt(key)}   
+              imageData={imageData[parseInt(key)]} 
             />
           </div>
         ))}

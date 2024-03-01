@@ -24,10 +24,15 @@ import mobileImage6 from './assets/images/AutumnSmall.jpg';
 
 const App = () => {  
   const [mode, setMode] = useState('light');
+  const [rerenderKey, setRerenderKey] = useState(0);
 
   const toggleMode = (modeName: string) => {
     setMode(modeName);
   };
+
+  const handleImageClick = () => {
+    setRerenderKey(prevKey => prevKey + 1);
+  }
 
   const imageData: { [key: number]: { mainImage: string; mobileImage: string } } = {
     1: { mainImage: Image1, mobileImage: mobileImage1 },
@@ -44,42 +49,17 @@ const App = () => {
           <Header mode={mode} toggleMode={toggleMode} />
         </div>
         <div className={`CanvasContainer ${mode}`}>
-          <div>
+        {Object.keys(imageData).map(key => (
+          <div key={key}>
             <MainCanvas 
-            mode={mode} 
-            imageNumber={1}   
-            imageData={imageData[1]} />
+                key={rerenderKey} // Use rerenderKey as key to trigger re-render
+                mode={mode} 
+                imageNumber={parseInt(key)}   
+                imageData={imageData[parseInt(key)]} 
+                onClick={handleImageClick} 
+            />
           </div>
-          <div>
-            <MainCanvas 
-            mode={mode} 
-            imageNumber={2}   
-            imageData={imageData[2]} />
-          </div>
-          <div>
-            <MainCanvas 
-            mode={mode} 
-            imageNumber={3}   
-            imageData={imageData[3]} />
-          </div>
-          <div>
-            <MainCanvas 
-            mode={mode} 
-            imageNumber={4}   
-            imageData={imageData[4]} />
-          </div>
-          <div>
-            <MainCanvas 
-            mode={mode} 
-            imageNumber={6}   
-            imageData={imageData[6]} />
-          </div>
-          <div>
-            <MainCanvas 
-            mode={mode} 
-            imageNumber={5}   
-            imageData={imageData[5]} />
-          </div>
+        ))}
       </div>
         <div className={`FooterContainer ${mode}`}>
           <FooterComponent mode={mode} />
